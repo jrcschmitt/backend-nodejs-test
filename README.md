@@ -54,7 +54,7 @@ This RESTful API has one available route:
 
 ## Running the integration tests
 
-To run the integration tests execute these following steps:
+To run the integration tests, execute these following steps:
 
   1. Ensure that the application is running
 
