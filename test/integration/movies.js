@@ -18,6 +18,21 @@ describe('Movies - Endpoints', () => {
         res.body.should.have.property('max');
         res.body.min.should.be.a('array');
         res.body.max.should.be.a('array');
+        res.body.max.should.have.property('length').equal(1);
+        for (let i = 0; i < res.body.max.length; i++) {
+          const intervalData = res.body.max[i];
+          intervalData.should.have.property('producer').equal('Matthew Vaughn');
+          intervalData.should.have.property('interval').equal(13);
+          intervalData.should.have.property('previousWin').equal(2002);
+          intervalData.should.have.property('followingWin').equal(2015);
+        }
+        for (let i = 0; i < res.body.min.length; i++) {
+          const intervalData = res.body.min[i];
+          intervalData.should.have.property('producer').equal('Joel Silver');
+          intervalData.should.have.property('interval').equal(1);
+          intervalData.should.have.property('previousWin').equal(1990);
+          intervalData.should.have.property('followingWin').equal(1991);
+        }
         done();
       });
     });
@@ -30,6 +45,7 @@ describe('Movies - Endpoints', () => {
           chai.assert.isNotEmpty(res.body);
           res.should.have.status(200);
           res.body.should.be.a('array');
+          res.body.should.have.property('length').equal(206);
           done();
         });
     });
